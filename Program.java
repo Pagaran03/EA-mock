@@ -152,7 +152,7 @@ public class Program {
      * PWEDE NAKA MO PROCEED SA CHECKOUT
      */
     private void AddtoCart(){
-        ProductList();
+       // ProductList();
       int choice = 0;
       //System.out.print("Enter the Number of the Product you want to buy\nIf you are done picking press 6 to checkout items.\nOption: ");
         System.out.println("\n\n");
@@ -334,7 +334,7 @@ public class Program {
 
     /*PRINT RANI SIYA SA MGA ITEMS NGA NAKA LISTA SA PRODUCTLIST */
     private void ItemList(){
-        ProductList();
+       //ProductList();
         System.out.println("+------------------------------------------------------------------------+");
         System.out.println("|                              ITEMS LIST                                |");
         System.out.println("+------------------------------------------------------------------------+");
@@ -353,6 +353,7 @@ public class Program {
      * IF WALA PROCEED SA ADDUSER
      */
     public void RunMe(){
+        ProductList();
        while(charlang != 'e'){
         //System.out.print("Welcome to the secret shop \nAlready Have an account? press 'y' if yes 'N' if no \n'e' to Exit\nOption: ");
         System.out.println("\n\n");
