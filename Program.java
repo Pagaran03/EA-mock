@@ -11,7 +11,7 @@ public class Program {
     static int ID, AGE,sum;
     static String NAME,EMAIL,USERNAME,PASSWORD,confirmPass,loginUser,loginPass,CARTNAME;
     static String currentsessionuser,currentsessionpass;
-    static String PRODNAME;
+    static String PRODNAME,ADDRESS;
     static int PRICE,CARTPRICE;
     static char charlang;
     static Scanner scan = new Scanner(System.in);
@@ -20,6 +20,7 @@ public class Program {
     // LIKE NAME EMAIL UG PASS
     private void addUser(){
         scan.nextLine();
+        System.out.println("\n\n             SIGN UP             \n");
         System.out.print("Enter Name: ");
         NAME = scan.nextLine();
         System.out.print("Enter Age: ");
@@ -27,6 +28,8 @@ public class Program {
         scan.nextLine();
         System.out.print("Enter Email: ");
         EMAIL = scan.nextLine();
+        System.out.print("Enter Address: ");
+        ADDRESS = scan.nextLine();
         System.out.print("Enter Username: ");
         USERNAME = scan.nextLine();
         System.out.print("Enter Password: ");
@@ -40,7 +43,7 @@ public class Program {
     // IS SAME BA SA CONFIRM PASSWORD
     private Userlist Confirm(){
         addUser();
-        Userlist users = new Userlist(ID, NAME, AGE, USERNAME, EMAIL, PASSWORD);
+        Userlist users = new Userlist(ID, NAME, AGE,ADDRESS, USERNAME, EMAIL, PASSWORD);
         if(PASSWORD.equals(confirmPass)){
         userList.add(users);
         System.out.print("\n     SUCCESSFULLY SIGNED-UP     \n\n");
@@ -67,6 +70,7 @@ public class Program {
     */
     private void Login(){
         scan.nextLine();
+        System.out.println("\n\n              LOGIN              \n");
         System.out.print("Enter Username: ");
         loginUser = scan.nextLine();
         System.out.print("Enter Password: ");
@@ -74,12 +78,13 @@ public class Program {
         
         for(Userlist users : userList){
             if((users.getUSERNAME().equals(loginUser) && users.getPASSWORD().equals(loginPass))){
-                System.out.println("\n\n-------LOGIN-------");
+                System.out.println("\n\n       SUCCESSFULLY LOGIN         ");
                 CurrentSession();
                 Homepage();
             }
             else if(!users.getUSERNAME().equals(loginUser) && !users.getPASSWORD().equals(loginPass)){
-                System.out.println("INVALID CREDENTIALS");
+                System.out.println("           INVALID CREDENTIALS        ");
+                
             }
         }
     }
@@ -134,7 +139,7 @@ public class Program {
     }
     private void cartItems()
     {
-        System.out.println("\n\nProducts in your cart: ");
+        System.out.println("\n\nPRODUCTS IN YOUR CART: ");
         for(cart carts : addtoCart){
             System.out.println("Product Name: " + carts.getCartName()
             + "\nProduct Price: " + carts.getCartPrice() + "\n");
@@ -218,7 +223,7 @@ public class Program {
             break;
 
         case 5:       
-        System.out.println("\n\nProducts in your cart: ");
+        System.out.println("\n\nPRODUCTS IN YOUR CART:  ");
         for(cart carts : addtoCart){
             System.out.println("Product Name: " + carts.getCartName()
             + "\nProduct Price: " + carts.getCartPrice() + "\n");
@@ -229,16 +234,16 @@ public class Program {
                 //System.out.println("You want to proceed to checkout?");
               //  System.out.println("Press 'y' for Yes 'n' for No");
         System.out.println("\n\n");
-        System.out.println("+----------------------------------+");
-        System.out.println("|-------PROCEED TO CHECKOUT?-------|");
-        System.out.println("+                                  +");
-        System.out.println("|                                  |");
-        System.out.println("+ PRESS [Y] IF YES                 +");
-        System.out.println("|                                  |");
-        System.out.println("+ PRESS [N] IF NO                  +");
-        System.out.println("|                                  |");
-        System.out.println("+                                  +");
-        System.out.println("+----------------------------------+");
+        System.out.println("+-----------------------------------------------------------------+");
+        System.out.println("|----------------------PROCEED TO CHECKOUT?-----------------------|");
+        System.out.println("+                                                                 +");
+        System.out.println("|                                                                 |");
+        System.out.println("+ PRESS [Y] IF YES (PRINT RECEIPT ,CLEAR CART ITEMS & GO HOMEPAGE +");
+        System.out.println("|                                                                 |");
+        System.out.println("+ PRESS [N] IF NO  (SAVE ITEM CHOICE TO CART & BACK HOMEPAGE)     +");
+        System.out.println("|                                                                 |");
+        System.out.println("+                                                                 +");
+        System.out.println("+-----------------------------------------------------------------+");
         System.out.print("Option: ");
                 scan.nextLine();
                choice = scan.next().charAt(0);
@@ -253,7 +258,8 @@ public class Program {
                 System.out.println("|  Cashier Name: Brecht                            |");
                 System.out.println("|  INVOICE NO: 458-80-108                          |");
                 System.out.println("+--------------------------------------------------+");
-                System.out.println(  "  Customer Name: " + currentsessionuser + "        ");
+                System.out.println("|   Customer Name: " + currentsessionuser + "      |");
+                System.out.println("|   Customer Address: " + ADDRESS + "              |");
                 System.out.println("+--------------------------------------------------+");
                 for(cart items : addtoCart){
                 System.out.println(items.getCartName() + " = " + items.getCartPrice());
@@ -309,7 +315,8 @@ public class Program {
                 System.out.println("\n\nName: " + users.getNAME()
                 + "\nAge: " + users.getAGE()
                 +"\nUsername: " + users.getUSERNAME()
-                +"\nEmail: " + users.getEMAIL());
+                +"\nEmail: " + users.getEMAIL()
+                +"\nAddress: " + users.getADDRESS());
             }
         }
     }
@@ -334,7 +341,7 @@ public class Program {
 
     /*PRINT RANI SIYA SA MGA ITEMS NGA NAKA LISTA SA PRODUCTLIST */
     private void ItemList(){
-       //ProductList();
+       
         System.out.println("+------------------------------------------------------------------------+");
         System.out.println("|                              ITEMS LIST                                |");
         System.out.println("+------------------------------------------------------------------------+");
@@ -355,7 +362,7 @@ public class Program {
     public void RunMe(){
         ProductList();
        while(charlang != 'e'){
-        //System.out.print("Welcome to the secret shop \nAlready Have an account? press 'y' if yes 'N' if no \n'e' to Exit\nOption: ");
+       
         System.out.println("\n\n");
         System.out.println("+----------------------------------+");
         System.out.println("|      WELCOME TO SECRET SHOP      |");
@@ -363,11 +370,11 @@ public class Program {
         System.out.println("|-----ALREADY HAVE AN ACCOUNT?-----|");
         System.out.println("+                                  +");
         System.out.println("|                                  |");
-        System.out.println("+ PRESS [Y] IF YES                 +");
+        System.out.println("+ PRESS [Y] IF YES (LOGIN)         +");
         System.out.println("|                                  |");
-        System.out.println("+ PRESS [N] IF NO                  +");
+        System.out.println("+ PRESS [N] IF NO  (SIGN UP)       +");
         System.out.println("|                                  |");
-        System.out.println("+ PRESS [E] FOR EXIT               +");
+        System.out.println("+ PRESS [E] FOR EXIT  (END)        +");
         System.out.println("|                                  |");
         System.out.println("+                                  +");
         System.out.println("+----------------------------------+");
